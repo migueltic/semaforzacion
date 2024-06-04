@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../utils/Context";
+import NoInputFile from "./NoInputFile";
 
 export default function Output() {
 
@@ -7,6 +8,9 @@ export default function Output() {
   
   return (
     <>
+      {
+        imageData === null ? <NoInputFile /> : ''
+      }
       {imageData && (
         <div className="flex flex-col items-center justify-center">
           <h2 className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-400 to-green-500 my-5">Resultado</h2>
