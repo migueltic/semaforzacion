@@ -103,6 +103,7 @@ def get_traffic_light_color(image, bbox):
         return 'Yellow'
     else:
         return 'Green'
+    
 
 def draw_boxes(image, bboxes, classes, scores, threshold=0.5):
     for i in range(len(bboxes)):
@@ -118,10 +119,10 @@ def draw_boxes(image, bboxes, classes, scores, threshold=0.5):
 @app.route('/detectar_color', methods=['POST'])
 def detectar_color():
     if 'file' not in request.files:
-        return jsonify({"error": "No file part"}), 400
+        return jsonify({"error": "No file part", "status": 400}), 400
     file = request.files['file']
     if file.filename == '':
-        return jsonify({"error": "No selected file"}), 400
+        return jsonify({"error": "No selected file", "status": 401}), 400
     if file:
         image = np.fromstring(file.read(), np.uint8)
         image = cv2.imdecode(image, cv2.IMREAD_COLOR)
@@ -142,7 +143,7 @@ def detectar_color():
         _, buffer = cv2.imencode('.jpg', image_with_boxes)
         image_base64 = base64.b64encode(buffer).decode('utf-8')
 
-        return jsonify({"detections": result, "image": image_base64})
+        return jsonify({"detections": result, "image": image_base64, "status": 200})
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
