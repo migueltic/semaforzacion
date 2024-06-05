@@ -28,8 +28,6 @@ function AppProvider({ children }) {
     setImageData(result.image);
     setDetections(result.detections);
     setStatus(result.status);
-
-    console.log(result);
   };
 
 

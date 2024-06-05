@@ -122,7 +122,7 @@ def detectar_color():
         return jsonify({"error": "No file part", "status": 400}), 400
     file = request.files['file']
     if file.filename == '':
-        return jsonify({"error": "No selected file", "status": 401}), 400
+        return jsonify({"error": "No selected file", "status": 400}), 400
     if file:
         image = np.fromstring(file.read(), np.uint8)
         image = cv2.imdecode(image, cv2.IMREAD_COLOR)

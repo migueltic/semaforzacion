@@ -3,8 +3,6 @@ export default function NoFileSVG(props) {
     <svg
       className="w-14 h-14 fill-gray-200"
       xmlns="http://www.w3.org/2000/svg"
-      width={24}
-      height={24}
       viewBox="0 0 24 24"
   
       {...props}

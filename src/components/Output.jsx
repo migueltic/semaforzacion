@@ -6,15 +6,12 @@ import OutputSuccess from "./OutputSuccess";
 
 export default function Output() {
 
-  const {imageData, detections, status} = useContext(AppContext);
-  
+  const { imageData, detections } = useContext(AppContext);
+
   return (
     <>
       {
-        imageData === null ? <NoInputFile /> : (detections?.length > 0 && detections?.length !== undefined) ?  <OutputSuccess /> : ''
-      }
-      {
-        status === 400 ? <ErrorFile /> : ''
+        (imageData === null) ? <NoInputFile /> : (detections?.length > 0 && imageData !== null) ? <OutputSuccess /> : <ErrorFile />
       }
     </>
   );
