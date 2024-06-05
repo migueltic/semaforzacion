@@ -7,7 +7,7 @@ export default function ErrorFile() {
   const { detections } = useContext(AppContext);
 
   return (
-    <div className="text-center text-3xl flex flex-col items-center w-[550px] mx-auto h-[350px] shadow-lg rounded-2xl bg-gray-700 justify-center">
+    <div className="w-full h-full flex flex-col justify-center items-center">
       <ErrorFileSVG />
       <p className="mt-5 font-thin">
         {
